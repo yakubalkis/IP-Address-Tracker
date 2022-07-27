@@ -32,8 +32,6 @@ body{
 .header .input-button{
     transform: translateY(2rem);
     height: 2.5rem;
-    display: flex;
-    flex-wrap: nowrap;
 }
 .header input{
     width: 25rem;
@@ -181,11 +179,16 @@ body{
     .header .head{
         font-size: 10px;
     }
+    .header .input-button{
+        display: flex;
+        flex-wrap: nowrap;
+    }
     .header input{
         width: 13rem;
         height: 2.5rem;
         padding-left: 15px;
     }
+    
     .header input::placeholder{
         font-size: 11px;
      }
