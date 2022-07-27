@@ -1,4 +1,3 @@
-//import leaflet from 'leaflet'
 import iconImg  from './img/icon-location.svg';
 
 const dataIP = document.querySelector('.data-IP');
@@ -10,13 +9,14 @@ const inputText = document.querySelector('.searchInput');
 const searchButton = document.querySelector('.searchButton');
 let lat,lng,map;
 
-// 31.210.37.122
+
 const getValueOfInput = function(){     
     const  input = inputText.value;
     geoAPI(input);
-    //createMap();
+   
 }
 
+// Events (Enter,click)
 inputText.addEventListener('keypress',(e) => {
     if(e.key === 'Enter'){
         getValueOfInput();
@@ -30,11 +30,11 @@ const geoAPI = async function(input){
     
     try{
     const res  = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_zLbVjPXrKNY0v9Si8fOIY2p6Z1cWE&ipAddress=${input}`);
-    if(!res.ok) throw new Error('Problem about process  of fetching API');
+    if(!res.ok) throw new Error('Problem about process of fetching API');
     const data = await res.json();
    
     // put the data in data section
-    console.log(data);
+   
     dataIP.textContent = data.ip;
     dataLocation.textContent = `${data.location.region}, ${data.location.country}`;
     dataTimezone.textContent = `UTC ${data.location.timezone}`;
@@ -44,8 +44,8 @@ const geoAPI = async function(input){
     //  assign lat,lng informations
     lat = data.location.lat;
     lng =  data.location.lng;
-    console.log(lat,lng)
-    if (map != undefined) { map.remove(); }
+    
+    if (map != undefined) { map.remove(); } //check, if map container is  already  initialized
     createMap(lat,lng);
     
 }   catch(err){
@@ -54,18 +54,17 @@ const geoAPI = async function(input){
 }   
 }
 
+
 const createMap = function(lat,lng){
     
-    
-     map = L.map('map').setView([lat, lng], 15);
+    map = L.map('map').setView([lat, lng], 15);
     
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    const myIcon =  L.icon({
-        iconUrl: iconImg
-      
+    const myIcon =  L.icon({ 
+        iconUrl: iconImg 
     });
     L.marker([lat,lng], {icon: myIcon}).addTo(map);
 
