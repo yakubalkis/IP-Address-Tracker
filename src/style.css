@@ -32,8 +32,8 @@ body{
 .header .input-button{
     transform: translateY(2rem);
     height: 2.5rem;
-    
-   
+    display: flex;
+    flex-wrap: nowrap;
 }
 .header input{
     width: 25rem;
@@ -44,7 +44,7 @@ body{
     padding-left:20px ;
     cursor: pointer;
    font-size: 18px;
-  
+   
 }
 .header input::placeholder{
    color: hsl(0, 0%, 59%);
@@ -71,7 +71,7 @@ body{
 .map{
     width: 100%;
     height: 25rem;
-    background-color: red;
+    background-color: hsl(0, 0%, 80%);
     z-index: 1;
 }
 .data{
@@ -108,6 +108,7 @@ body{
     background-color:hsl(0, 0%, 59%) ;
     opacity: 0.5;
     transform: translateY(8px);
+    
 }
 .line-1{
     transform: translate(10px,8px);
@@ -126,14 +127,92 @@ body{
     transform: translateY(-5px);
 }
 
-.data .location{
-   transform: translateX(-15px);
-}
-
-.data .timezone{
-    transform: translateX(-15px);
-}
-.data .ISP{
+.data .data-same{
     transform: translateX(-15px);
     overflow: hidden;
 }
+@media only screen and (max-width:960px){
+    .header{
+        height: 12rem;
+    } 
+    .data{
+        width: 40rem;
+        height: 6.6rem;  
+        top: 12rem;      
+    }
+    .data-child{
+        width: 6rem;
+    }
+    .data-pieces{
+        font-size: 15px;
+    }
+    .divider-line{
+        height: 3rem;
+    }
+    .map{
+        height: 24rem;
+    }
+}   
+@media only screen and (max-width:760px){
+    .header input{
+        width: 20rem;
+        height: 2.5rem;
+    }
+    .header  button{
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+    .header{
+        height: 10rem;
+    } 
+    .data{
+        width: 30rem;
+        
+    }
+    .divider-line{
+        height: 3rem;
+    }
+    .data .data-same{
+        transform: translateX(5px);
+    }
+
+}
+@media only screen and (max-width:425px){
+    .header .head{
+        font-size: 10px;
+    }
+    .header input{
+        width: 13rem;
+        height: 2.5rem;
+        padding-left: 15px;
+    }
+    .header input::placeholder{
+        font-size: 11px;
+     }
+    .divider-line{
+        display: none;
+    }
+    .data{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 15rem;
+        height: 14rem;
+        top: 14rem;
+    }
+    .data .head{
+        font-weight: bold;
+        font-size: 10px;
+    }
+    .data .data-child{
+       width: 8rem;
+       transform: translateY(-10px);
+    }
+    .data .data-pieces{
+        transform: translateY(-10px);
+        max-height: 2.3rem;
+    }
+    .map{
+        height: 20rem;
+    }
+}  
